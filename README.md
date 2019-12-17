@@ -1,4 +1,4 @@
-# AWS EKS cluster
+# Google GKE cluster
 
 Creates and GKE Cluster in the given Region.
 
