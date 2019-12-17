@@ -7,8 +7,6 @@ User can choose:
 1. Name of the cluster
 1. Region
 
-Template uses the new (re:Invent 2019) `aws_eks_node_group` resource to automate node deployment and cluster join.
-
 Template can be run as follows:
 
 * Locally
