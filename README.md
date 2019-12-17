@@ -17,7 +17,7 @@ Template can be run as follows:
 
 1. Pull the repo
 1. Set variable values in `terraform.tvars.(json)`
-1. Add your AWS access and secret keys to `terraform.tfvars(.json)`, or enter them at the run time prompts. (scalr_aws_access_key, scalr_aws_secret_key)
+1. Add your GCE access and secret keys to `terraform.tfvars(.json)`, or enter them at the run time prompts. (scalr_google_project, scalr_google_credentials)
 1. Run `terraform init;terraform apply` and watch the magic happen.
 
 ## Using with Scalr Next-Gen as Remote Backend
