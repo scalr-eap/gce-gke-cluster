@@ -9,8 +9,6 @@ terraform {
 }
 
 provider "google" {
-    project     = "${var.scalr_google_project}"
-    credentials = "${var.scalr_google_credentials}"
     region      = var.region
 }
 
@@ -36,12 +34,12 @@ resource "google_container_cluster" "this" {
 resource "google_container_node_pool" "this_nodes" {
   name       = "${var.cluster_name}-nodes"
   location = var.region
-  cluster    = "${var.cluster_name}"
+  cluster    = google_container_cluster.this.name
   node_count = 1
 
   node_config {
     preemptible  = true
-    machine_type = var.instance_type
+#    machine_type = var.instance_type
 
     metadata = {
       disable-legacy-endpoints = "true"
@@ -50,6 +48,8 @@ resource "google_container_node_pool" "this_nodes" {
     oauth_scopes = [
       "https://www.googleapis.com/auth/logging.write",
       "https://www.googleapis.com/auth/monitoring",
+      "https://www.googleapis.com/auth/devstorage.read_only",
+      "https://www.googleapis.com/auth/sqlservice.admin"
     ]
   }
 }
@@ -68,5 +68,4 @@ data "google_client_config" "default" {
 
 output "kubectl-config" {
   value = "gcloud container clusters get-credentials ${var.cluster_name} --region ${var.region} --project ${data.google_client_config.default.project}"
-
   }
