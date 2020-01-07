@@ -39,6 +39,6 @@ In general follow the example here https://scalr-athena.readthedocs-hosted.com/e
    1. cloud.instance_types - Restrict the instance types that are allowed. Minimum 4GB of ram.
 1. Create a Global Variable `name_fmt` with REGEX `^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$`
 1. Create a Global Variable `numeric_fmt` with REGEX `^[0-9][0-9]*$`
-1. Fork or clone the Source repo (https://github.com/scalr-eap/aws_eks_cluster)
+1. Fork or clone the Source repo (https://github.com/scalr-eap/gce-gke-cluster)
 1. Create the Service Catalog offering pointing to your copy repo
 1. Request the offering. It can take 10-15 minutes to deploy the cluster.
