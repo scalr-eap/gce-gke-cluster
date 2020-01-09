@@ -12,9 +12,12 @@ provider "google" {
     region      = var.region
 }
 
+data "google_compute_zones" "available" {
+}
+
 resource "google_container_cluster" "this" {
   name     = "${var.cluster_name}"
-  location = var.region
+  location = data.google_compute_zones.available.names[0]
 
   network = google_compute_network.cluster_vpc.self_link
 
@@ -33,7 +36,7 @@ resource "google_container_cluster" "this" {
 
 resource "google_container_node_pool" "this_nodes" {
   name       = "${var.cluster_name}-nodes"
-  location = var.region
+  location = data.google_compute_zones.available.names[0]
   cluster    = google_container_cluster.this.name
   node_count = 1
 
